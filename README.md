@@ -3,8 +3,8 @@
 ### Repositório com infra experimental para executar DAGs com Selenium no Airflow.
 
 Principais referência: 
-* (https://github.com/HDaniels1991/airflow_selenium)[https://github.com/HDaniels1991/airflow_selenium]
-* (https://towardsdatascience.com/selenium-on-airflow-automate-a-daily-online-task-60afc05afaae)[https://towardsdatascience.com/selenium-on-airflow-automate-a-daily-online-task-60afc05afaae]
+* https://github.com/HDaniels1991/airflow_selenium
+* https://towardsdatascience.com/selenium-on-airflow-automate-a-daily-online-task-60afc05afaae
 
 ### Instalação ambiente DEV
 
