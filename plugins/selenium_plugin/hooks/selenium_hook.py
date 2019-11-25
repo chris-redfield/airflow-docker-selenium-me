@@ -23,9 +23,8 @@ class SeleniumHook(BaseHook):
         Creates the selenium docker container
         '''
         logging.info('creating_container')
-        cwd = os.getcwd()
-        self.local_downloads = os.path.join(cwd, 'downloads')
-        self.sel_downloads = '/home/seluser/downloads'
+        self.local_downloads = 'downloads'
+        self.sel_downloads = '/usr/local/airflow/downloads/'
         volumes = ['{}:{}'.format(self.local_downloads,
                                   self.sel_downloads),
                    '/dev/shm:/dev/shm']
