@@ -10,10 +10,11 @@ services:
             - POSTGRES_USER=airflow
             - POSTGRES_PASSWORD=airflow
             - POSTGRES_DB=airflow
-        # Uncomment these lines to persist data on the local filesystem.
-        #     - PGDATA=/var/lib/postgresql/data/pgdata
-        # volumes:
-        #     - ./pgdata:/var/lib/postgresql/data/pgdata
+            - PGDATA=/var/lib/postgresql/data/pgdata
+        volumes:
+            - ./pgdata:/var/lib/postgresql/data/pgdata
+        ports:
+            - "5432:5432"
 
     webserver:
         #image: docker_airflow:latest
@@ -34,8 +35,10 @@ services:
             # - REDIS_PASSWORD=redispass
         volumes:
             - ./dags:/usr/local/airflow/dags
+            - ./sql:/usr/local/airflow/sql
             # Uncomment to include custom plugins
             - ./plugins:/usr/local/airflow/plugins
+            - ./config:/usr/local/airflow
             # Selenium scripts 
             - ./selenium_scripts:/usr/local/airflow/selenium_scripts
             # Selenium downloads

@@ -10,7 +10,12 @@ RUN pip install docker && \
     pip install selenium && \
     pip install bs4 && \
     pip install lxml && \
-    pip install boto3
+    pip install boto3 && \
+    pip install flask-bcrypt && |
+    pip install werkzeug>=0.15.0 && \
+    pip install pysmb==1.1.27 && \
+    pip install xlrd==1.2.0 && \
+    pip install python-slugify==3.0.4
 
 RUN groupadd --gid 999 docker \
    && usermod -aG docker airflow 
