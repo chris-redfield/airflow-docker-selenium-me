@@ -58,8 +58,8 @@ local_downloads = os.path.join(cwd, 'downloads')
 default_args = {
     'owner': 'me?',
     # 'wait_for_downstream': True,
-    'start_date': datetime(2019, 11, 18),
-    'end_date': datetime(2019, 11, 19),
+    'start_date': datetime(2019, 11, 25),
+    'end_date': datetime(2019, 11, 26),
     'retries': 3,
     'retries_delay': timedelta(minutes=5)
     }
