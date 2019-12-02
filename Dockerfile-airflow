@@ -6,6 +6,19 @@ ENV PYTHONPATH=$PYTHONPATH:${AIRFLOW_USER_HOME}
 # Python packages required for th Selenium Plugin
 USER root
 
+RUN apt-get update -yqq && \
+    apt-get install -y gnupg && \
+    apt-get install -y apt-transport-https ca-certificates
+
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+
+RUN apt-get update -yqq && \
+    apt-get install -y unixodbc unixodbc-dev && \
+    ACCEPT_EULA=Y apt-get install -y msodbcsql17 && \
+    ACCEPT_EULA=Y apt-get install mssql-tools
+    
+
 RUN pip install docker && \
     pip install selenium && \
     pip install bs4 && \
@@ -15,7 +28,9 @@ RUN pip install docker && \
     pip install werkzeug>=0.15.0 && \
     pip install pysmb==1.1.27 && \
     pip install xlrd==1.2.0 && \
-    pip install python-slugify==3.0.4
+    pip install python-slugify==3.0.4 && \
+    pip install pyodbc==4.0.27 && \
+    pip install pandas
 
 RUN groupadd --gid 999 docker \
    && usermod -aG docker airflow 
