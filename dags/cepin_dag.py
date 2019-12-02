@@ -92,7 +92,7 @@ def unzip_file (from_file, to_file):
 def copy_to_sqlserver (nome_tabela, nome_arquivo):
 
     #Parametros da conexão (conectando com o banco no latitude)
-    server = '10.209.42.30,1433'
+    server = 'HOST,PORT'
     database = 'CEPIM'
     username = 'USR'
     password = 'PASS'
