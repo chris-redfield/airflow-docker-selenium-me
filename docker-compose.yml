@@ -114,6 +114,11 @@ services:
         environment:
             - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
             - EXECUTOR=Celery
+            - LAKE_HOST=HOST
+            - LAKE_PORT=PORT
+            - CEPIM_DATABASE=DATABASE_NAME
+            - LAKE_USER=USER_NAME
+            - LAKE_PASS=PASSWORD
             # - POSTGRES_USER=airflow
             # - POSTGRES_PASSWORD=airflow
             # - POSTGRES_DB=airflow
