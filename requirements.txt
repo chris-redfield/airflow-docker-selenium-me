@@ -6,3 +6,4 @@ python-slugify==3.0.4
 pyodbc==4.0.27
 selenium==3.141.0
 bs4==0.0.1
+pyPDF2==1.26.0
