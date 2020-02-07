@@ -30,7 +30,8 @@ RUN pip install docker && \
     pip install xlrd==1.2.0 && \
     pip install python-slugify==3.0.4 && \
     pip install pyodbc==4.0.27 && \
-    pip install pandas
+    pip install pandas && \
+    pip install pyPDF2
 
 RUN groupadd --gid 999 docker \
    && usermod -aG docker airflow 
