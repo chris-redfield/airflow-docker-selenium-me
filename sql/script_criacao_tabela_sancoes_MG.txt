@@ -1,0 +1,10 @@
+CREATE TABLE dbo.Dados_SancaoMG(
+	CPF varchar(11) NULL,
+	CNPJ varchar(14) NULL,
+	NOME varchar(100) NULL,
+	TIPO_PENALIDADE varchar(50) NULL,
+	DATA_INICIO_PENALIDADE varchar(10) NULL,
+	DATA_FIM_PENALIDADE  varchar(10) NULL,
+	DATA_DESPACHO  varchar(10) NULL,
+	ORGAO_APLICADOR varchar(100) NULL
+)
