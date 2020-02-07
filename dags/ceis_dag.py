@@ -22,7 +22,7 @@ class ExtendedPythonOperator(PythonOperator):
     template_fields = ('templates_dict', 'op_kwargs')
 
 args = {
-    'owner': 'airflow',
+    'owner': 'COGIT-ME',
     'depends_on_past': False,
     'start_date': datetime(2020,2, 4),
     'email': ['airflow@example.com'],
