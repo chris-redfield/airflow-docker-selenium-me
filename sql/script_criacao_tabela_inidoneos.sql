@@ -1,0 +1,9 @@
+CREATE TABLE dbo.Dados_Inidoneos(
+CPF varchar(11) NULL,
+NOME varchar(100) NULL,
+PROCESSO varchar(14) NULL,
+DELIBERACAO varchar(17) NULL,
+DATA_TRANSINT varchar(10) NULL,
+DATA_FINAL varchar(10) NULL
+);
+CREATE INDEX IDX_DADOS_INIDONEOS ON dbo.Dados_Inidoneos (CPF);

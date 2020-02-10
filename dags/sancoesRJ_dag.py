@@ -82,7 +82,6 @@ def edita_base(nome_arquivo_out):
 # Importar as informações no banco
 def truncate_e_reinsert_to_sqlserver (nome_tabela, nome_arquivo):
 
-    #Parametros da conexão (conectando com o banco no latitude)
     server = f"{os.environ['LAKE_HOST']},{os.environ['LAKE_PORT']}"
     database = os.environ['INIDONEOS_DATABASE']
     username = os.environ['LAKE_USER']
