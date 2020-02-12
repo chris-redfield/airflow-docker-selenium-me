@@ -24,7 +24,7 @@ class ExtendedPythonOperator(PythonOperator):
 args = {
     'owner': 'COGIT-ME',
     'depends_on_past': False,
-    'start_date': datetime(2020,2, 4),
+    'start_date': datetime(2020,2, 12),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,
