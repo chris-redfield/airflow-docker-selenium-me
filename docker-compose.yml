@@ -116,9 +116,14 @@ services:
             - EXECUTOR=Celery
             - LAKE_HOST=HOST
             - LAKE_PORT=PORT
-            - CEPIM_DATABASE=DATABASE_NAME
-            - LAKE_USER=USER_NAME
-            - LAKE_PASS=PASSWORD
+            - CEPIM_DATABASE=DATABASE
+            - CEIS_DATABASE=DATABASE
+            - CNEP_DATABASE=DATABASE
+            - INIDONEOS_DATABASE=DATABASE
+            - LENIENCIA_DATABASE=DATABASE
+            - POLITICOS_DATABASE=DATABASE
+            - LAKE_USER=USER
+            - LAKE_PASS=PASS
             # - POSTGRES_USER=airflow
             # - POSTGRES_PASSWORD=airflow
             # - POSTGRES_DB=airflow
