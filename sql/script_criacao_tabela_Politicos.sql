@@ -1,0 +1,25 @@
+CREATE TABLE Dados_Deputado (
+    NUMERO_DEPUTADO VARCHAR(50),
+    NOME_DEPUTADO VARCHAR(300),
+    CPF_DEPUTADO VARCHAR(20)
+);
+
+CREATE INDEX IDX_Dados_Deputado on Dados_Deputado(CPF_DEPUTADO);
+
+CREATE TABLE Dados_Senador (
+    NUMERO_SENADOR VARCHAR(50),
+    NOME_SENADOR VARCHAR(300),
+    CPF_SENADOR VARCHAR(20)
+);
+
+CREATE INDEX IDX_Dados_Senador on Dados_senador(CPF_SENADOR);
+
+CREATE TABLE Dados_Congressistas (
+    NUMERO_PARLAMENTAR varchar(50),
+    NOME_PARLAMENTAR varchar(300),
+    CPF_PARLAMENTAR varchar(20),
+    SITUACAO_PARLAMENTAR varchar(500),
+    CARGO_PARLAMENTAR varchar(500)
+);
+
+CREATE INDEX IDX_Dados_Congressistas on Dados_Congressistas(CPF_PARLAMENTAR);
