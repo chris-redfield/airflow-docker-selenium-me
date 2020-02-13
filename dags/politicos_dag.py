@@ -13,7 +13,7 @@ import time
 args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2020, 2, 12),
+    'start_date': datetime(2020, 2, 14),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,
@@ -32,13 +32,13 @@ class ExtendedPythonOperator(PythonOperator):
     '''
     template_fields = ('templates_dict', 'op_kwargs')
 
-local_downloads = os.path.join(os.getcwd(), 'downloads')
+local_downloads = os.path.join(os.getcwd(), 'downloads/politicos_dag')
 deputados_json_array = []
 
 
 #Conexão ao banco de dados
 def conexao_sql():
-     
+
     server = f"{os.environ['LAKE_HOST']},{os.environ['LAKE_PORT']}"
     database = os.environ['POLITICOS_DATABASE']
     username = os.environ['LAKE_USER']
@@ -105,6 +105,12 @@ def descompactaArquivo(arquivo):
 
 #Insere dados de Deputado
 def insereDeputados(url,nomeTabela1,nomeTabela2,deputados_file): 
+
+    try:
+        for filename in os.listdir(local_downloads):
+            os.remove(filename)
+    except:
+        os.mkdir(local_downloads)
 
     try:
         with open(deputados_file,'r') as f:
@@ -216,17 +222,17 @@ def insereSenador(nomeTabela1,nomeTabela2):
                         con.close()
     
 #Deleta arquivos
-def deletaArquivo():    
-    os.system("rm *.csv")
-    os.system("rm *.zip")
-    os.remove(os.path.join(local_downloads,'deputados_politicos.json'))
+def deletaArquivo():  
+    for filename in os.listdir(local_downloads):
+        os.remove(os.path.join(local_downloads,filename))  
+    os.rmdir(local_downloads)
 
 
 # ---------------------------------------------------------------------------------------------------------------
 # ------------------------------- AIRFLOW -----------------------------------------------------------------------
 
 # Processo: Politicos
-dag = DAG('politicos', default_args=args, schedule_interval=timedelta(days=30))
+dag = DAG('politicos', default_args=args, schedule_interval=timedelta(days=1))
 url_request = 'https://dadosabertos.camara.leg.br/api/v2/deputados'#?idLegislatura=56&ordem=ASC&ordenarPor=nome'
 tabela_deputados = 'Politicos.dbo.Dados_Deputado'
 tabela_congressistas = 'Politicos.dbo.Dados_Congressistas'
