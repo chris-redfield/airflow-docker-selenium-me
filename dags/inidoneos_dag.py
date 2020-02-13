@@ -15,7 +15,7 @@ import os                                                           # Tarefa 5
 args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2020, 2, 12),
+    'start_date': datetime(2020, 2, 14),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,
