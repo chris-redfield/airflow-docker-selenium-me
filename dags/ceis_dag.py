@@ -63,7 +63,7 @@ def get_data_from_url (target_url, target_file):
                 for chunk in r.iter_content(chunk_size=8192): 
                     if chunk:               # filter out keep-alive new chunks
                         f.write(chunk)
-                # f.flush()         # pode ser necessário para escrever o arquivo caso o sistema fique esperando juntar muita coisa
+                f.flush()         # pode ser necessário para escrever o arquivo caso o sistema fique esperando juntar muita coisa
 
 # --------------------------------------------------------------------------------------------------------------
 # ----------------------------- TAREFA 3 -----------------------------------------------------------------------
