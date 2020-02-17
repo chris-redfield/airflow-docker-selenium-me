@@ -38,4 +38,6 @@ RUN groupadd --gid 999 docker \
    && usermod -aG docker airflow 
 USER airflow
 
+COPY config/airflow.cfg /usr/local/airflow/
+
 RUN mkdir downloads
