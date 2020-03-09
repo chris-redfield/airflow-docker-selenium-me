@@ -10,7 +10,7 @@ import json
 import os
 
 args = {
-    'owner': 'airflow',
+    'owner': 'COGIT-ME',
     'depends_on_past': False,
     'start_date': datetime(2020, 2, 17),
     'email': ['airflow@example.com'],
