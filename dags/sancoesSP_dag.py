@@ -60,7 +60,7 @@ def copy_to_sql_server ():
     nome_tabela = 'Inadimplentes.dbo.Dados_inadimplentes'
 
     server = f"{os.environ['LAKE_HOST']},{os.environ['LAKE_PORT']}"
-    database = os.environ['INIDONEOS_DATABASE']
+    database = os.environ['INADIMPLENTES_DATABASE']
     username = os.environ['LAKE_USER']
     password = os.environ['LAKE_PASS']
 
