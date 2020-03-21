@@ -28,6 +28,22 @@ Navegar até pasta do projeto para poder referenciar o Dockerfile correto.
     docker build -t docker_selenium -f Dockerfile-selenium .
 ```
 
+4. Criar conta do primeiro usuário para autenticação:
+```python
+    import airflow
+    from airflow import models, settings
+    from airflow.contrib.auth.backends.password_auth import PasswordUser
+    user = PasswordUser(models.User())
+    user.username = 'user'
+    user.email = 'CGINF@economia.gov.br'
+    user.password = 'pass'
+    session = settings.Session()
+    session.add(user)
+    session.commit()
+    session.close()
+    exit()
+```
+
 ### Execução do serviço
 
 Navegar até a pasta do projeto e subir com docker-compose

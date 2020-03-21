@@ -15,7 +15,7 @@ import os                                                           # Tarefa 5
 args = {
     'owner': 'COGIT-ME',
     'depends_on_past': False,
-    'start_date': datetime(2020, 2, 17),
+    'start_date': datetime(2020, 3, 23),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,
