@@ -3,6 +3,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from time import sleep
+import re
 
 # Para tratar os arquivos baixados
 import os
@@ -21,6 +22,13 @@ def get_url(driver, pasta_download, pasta_destino, dicionario_bases):
         # Se não tiver, vamos comecar do comeco, da 1a pagina e 1o forcenedor
         lista_arquivos_baixados = glob.glob( f"{pasta_destino}/{base['tipo']}_*")
         if len(lista_arquivos_baixados) > 1:
+            
+            # Garantindo que não vai ter problema de ordenação com dados baixados em uma versão passada do código
+            lista_arquivos_baixados = [ re.sub('_([0-9])_', '_00\g<1>_', k ) for k in lista_arquivos_baixados]    # troca _1_ por _001_
+            lista_arquivos_baixados = [ re.sub('_([0-9][0-9])_', '_0\g<1>_', k ) for k in lista_arquivos_baixados] # troca _10_ por _010_
+            lista_arquivos_baixados = [ re.sub('_([0-9].xls)',  '_0\g<1>', k ) for k in lista_arquivos_baixados]  # troca _1.xls por _01.xls
+            
+            # Pega o ultimo arquivo da lista
             ultimo = sorted( lista_arquivos_baixados )[-1]
 
             # aproveita que o nome eh do tipo <<"./SançõesRestritivas_51_01.xls">> e tira a terminacao e separa pelos _
