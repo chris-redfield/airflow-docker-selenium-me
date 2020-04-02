@@ -11,6 +11,8 @@ import pyodbc
 import json
 import requests
 
+from airflow.utils.dates import days_ago
+
 class ExtendedPythonOperator(PythonOperator):
     '''
     extending the python operator so macros
@@ -21,7 +23,7 @@ class ExtendedPythonOperator(PythonOperator):
 args = {
     'owner': 'COGIT-ME',
     'depends_on_past': False,
-    'start_date': datetime(2020, 3, 31),
+    'start_date': days_ago(1),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,

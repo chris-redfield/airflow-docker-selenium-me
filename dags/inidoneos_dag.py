@@ -12,10 +12,12 @@ from tqdm import tqdm                                               # Tarefa 2
 import pandas                                                       # Tarefa 3
 import os                                                           # Tarefa 5
 
+from airflow.utils.dates import days_ago
+
 args = {
     'owner': 'COGIT-ME',
     'depends_on_past': False,
-    'start_date': datetime(2020, 3, 31),
+    'start_date': days_ago(1),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,

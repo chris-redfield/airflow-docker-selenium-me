@@ -16,6 +16,8 @@ import zipfile
 
 import unicodedata
 
+from airflow.utils.dates import days_ago
+
 class ExtendedPythonOperator(PythonOperator):
     '''
     extending the python operator so macros
@@ -27,7 +29,7 @@ class ExtendedPythonOperator(PythonOperator):
 args = {
     'owner': 'COGIT-ME',
     'depends_on_past': False,
-    'start_date': datetime(2020, 3, 31),
+    'start_date': days_ago(1),
     #'start_date': datetime(date.today().year, date.today().month, date.today().day),
     'email': ['airflow@example.com'],
     'email_on_failure': False,
