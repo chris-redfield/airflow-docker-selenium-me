@@ -51,13 +51,7 @@ def get_url(driver, pasta_download, pasta_destino, dicionario_bases):
         opcoes_navegacao[1].click()
         esperaCarregar(driver)
 
-        # Busca a quantidade de fornecedores na pagina (geralmente 15, menos na ultima pagina que pode ter menos)
-        # Na pratica, busca a table com classe gridview, dai entra para o corpo da tabela e verifica a quantidade de table rows sabendo que duas delas não são conteudo
-        #   -> 1 filho eh o cabecalho
-        #   -> 1 filho eh o seletor de pagina
-        qtd_fornecedores = driver.execute_script('return $(".gridview > tbody > tr").length -2')
-
-        print (f"Baixando a base {nome_base}, pagina {pagina}/{pagina_final}, fornecedor {fornecedor}/{qtd_fornecedores}")
+        print (f"Retomando a base {nome_base}, da pagina {pagina}/{pagina_final}, fornecedor {fornecedor}")
 
         # Inicio do loop de download
         while pagina <= pagina_final:
@@ -68,7 +62,10 @@ def get_url(driver, pasta_download, pasta_destino, dicionario_bases):
                 driver.execute_script(f"javascript:__doPostBack('ctl00$ContentPlaceHolder1$gdvConsultaAdm','Page${pagina}')")
                 esperaCarregar(driver)
 
-            # 15 fornecedores por página
+            # A ultima pagina tem numero variavel de fornecedores (pode não completar 15)
+            # então precisa saber certinho para parar no momento certo
+            qtd_fornecedores = 15 if pagina < pagina_final else driver.execute_script('return $(".gridview > tbody > tr").length -2')
+
             for index in range(fornecedor, qtd_fornecedores+1):
 
                 # Tem uma pegadinha, o primeiro link é o n=2 e o 15º é o n=16 
