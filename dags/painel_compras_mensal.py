@@ -58,7 +58,7 @@ dag = DAG(
     'painel_compras_mensal',
     default_args=default_args,
     description='dag mensal do painel de compras',
-    schedule_interval=timedelta(days=1),
+    schedule_interval=timedelta(days=30),
 )
 
 
