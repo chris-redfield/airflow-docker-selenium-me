@@ -16,6 +16,14 @@ services:
         ports:
             - "5432:5432"
 
+    sqlserver:
+        image: mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=@123admin
+        ports:
+            - "1433:1433"
+
     webserver:
         #image: docker_airflow:latest
         build:
@@ -41,6 +49,7 @@ services:
             - ./config:/usr/local/airflow
             # Selenium scripts 
             - ./selenium_scripts:/usr/local/airflow/selenium_scripts
+            - ./sqlalchemy_teiid:/usr/local/airflow/sqlalchemy_teiid
             # Selenium downloads
             - downloads:/usr/local/airflow/downloads
         ports:
@@ -114,8 +123,8 @@ services:
         environment:
             - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
             - EXECUTOR=Celery
-            - LAKE_HOST=HOST
-            - LAKE_PORT=PORT
+            - LAKE_HOST=sqlserver
+            - LAKE_PORT=1433
             - CEPIM_DATABASE=DATABASE
             - CEIS_DATABASE=DATABASE
             - CNEP_DATABASE=DATABASE
@@ -123,8 +132,11 @@ services:
             - INADIMPLENTES_DATABASE=DATABASE
             - LENIENCIA_DATABASE=DATABASE
             - POLITICOS_DATABASE=DATABASE
-            - LAKE_USER=USER
-            - LAKE_PASS=PASS
+            - PAINEL_DATABASE=seges_cgial_fornecedor
+            - LAKE_USER=SA
+            - LAKE_PASS=@123admin
+            - TEIID_USER=USER
+            - TEIID_PASS=PASS
             # - POSTGRES_USER=airflow
             # - POSTGRES_PASSWORD=airflow
             # - POSTGRES_DB=airflow
