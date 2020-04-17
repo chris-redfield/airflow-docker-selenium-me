@@ -32,7 +32,10 @@ RUN pip install docker && \
     pip install pyodbc==4.0.27 && \
     pip install pandas && \
     pip install pyPDF2 && \
-    pip install tqdm
+    pip install tqdm && \
+    pip install SQLAlchemy && \
+    pip install pymssql && \
+    pip install petl
 
 RUN groupadd --gid 999 docker \
    && usermod -aG docker airflow 
