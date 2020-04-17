@@ -44,6 +44,8 @@ Navegar até pasta do projeto para poder referenciar o Dockerfile correto.
     exit()
 ```
 
+5. Caso ambiente DEV, já existe um sqlserver local, para acessar é só usar o nome dado ao container (sqlserver) na variável de ambiente "LAKE_HOST"
+
 ### Execução do serviço
 
 Navegar até a pasta do projeto e subir com docker-compose
