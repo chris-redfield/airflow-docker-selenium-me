@@ -16,8 +16,6 @@ import sqlalchemy
 from sqlalchemy.dialects import registry
 registry.register("postgresql.teiid", "sqlalchemy_teiid", "TeiidDialect")
 
-import requests
-
 import os
 
 
