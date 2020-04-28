@@ -44,7 +44,19 @@ Navegar até pasta do projeto para poder referenciar o Dockerfile correto.
     exit()
 ```
 
-5. Caso ambiente DEV, já existe um sqlserver local, para acessar é só usar o nome dado ao container (sqlserver) na variável de ambiente "LAKE_HOST"
+5. Criar tabela de controle local
+
+No ambiente DEV já existe um sqlserver local no docker-compose, para acessar é só usar o nome dado ao container (sqlserver) na variável de ambiente "LAKE_HOST"
+
+```sql
+CREATE DATABASE seges_cgial_fornecedor;
+
+CREATE TABLE seges_cgial_fornecedor.dbo.CARGA_ATUALIZADA (
+	FONTE varchar(20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	DT_ATUALIZACAO_CARGA datetime NULL,
+	DT_ATUALIZACAO_CARGA_ANTERIOR datetime NULL
+);
+```
 
 ### Execução do serviço
 
