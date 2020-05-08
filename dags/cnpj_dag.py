@@ -338,7 +338,7 @@ def get_data_from_url ( target_url, target_file ):
             total_length = int(total_length)
             block_size = 1024
 
-            for data in tqdm(response.iter_content(block_size), total=ceil(total_length//block_size) , unit='KB', unit_scale=True, mininterval=20):
+            for data in tqdm(response.iter_content(block_size), total=ceil(total_length//block_size) , unit='KB', unit_scale=True, mininterval=30):
                 dl = dl  + len(data)
                 f.write(data)
             if total_length != 0 and dl != total_length:
