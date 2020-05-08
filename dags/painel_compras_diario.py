@@ -210,8 +210,13 @@ def load_fornecedor_penalidade():
 
     print("Consultando DW SICAF")
     df_penalidade = pd.read_sql_query(sql=Sicaf.FORNECEDOR_PENALIDADE, con=connSicaf)
-    df_penalidade['DT_INICIO'] = pd.to_datetime(df_penalidade['DT_INICIO'], format="%d/%m/%Y", errors='coerce')
-    df_penalidade['DT_FINAL'] = pd.to_datetime(df_penalidade['DT_FINAL'], format="%d/%m/%Y", errors='coerce')
+    
+    # mascara de data mudou
+    #df_penalidade['DT_INICIO'] = pd.to_datetime(df_penalidade['DT_INICIO'], format="%d/%m/%Y", errors='coerce')
+    df_penalidade['DT_INICIO'] = pd.to_datetime(df_penalidade['DT_INICIO'], format="%Y-%m-%d", errors='coerce')
+
+    #df_penalidade['DT_FINAL'] = pd.to_datetime(df_penalidade['DT_FINAL'], format="%d/%m/%Y", errors='coerce')
+    df_penalidade['DT_FINAL'] = pd.to_datetime(df_penalidade['DT_FINAL'], format="%Y-%m-%d", errors='coerce')
 
     print("Realizando carga na tabela _FORNECEDOR_PENALIDADE")
     df_penalidade.to_sql(name='_FORNECEDOR_PENALIDADE', con=engine, if_exists = 'append',index=False)
