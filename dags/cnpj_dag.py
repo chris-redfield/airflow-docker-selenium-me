@@ -1,6 +1,6 @@
 # Essa trava é para não apagar os arquivos baixados. Utilizamos para testes
 # para evitar que os dados sejam apagados e necessitar esperar dias baixando os dados do site da receita
-trava_de_seguranca = True
+trava_de_seguranca = False
 
 from airflow import DAG                                             # airflow
 from airflow.operators.python_operator import PythonOperator        # airflow
@@ -352,7 +352,7 @@ def downloader():
             cod = int(final_number.readline())
         final_number.close()
     except FileNotFoundError:
-        cod = 20
+        cod = 1
     retry = [False,0] #retry flag, contador
     sleep_time = 600
     while True:
