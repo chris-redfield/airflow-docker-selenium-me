@@ -110,8 +110,8 @@ def insereDeputados(url,nomeTabela1,nomeTabela2,deputados_file):
 
     try:
         for filename in os.listdir(local_downloads):
-            print("removing file ", local_downloads + filename)
-            os.remove(local_downloads + filename)
+            print("removing file ", local_downloads + "/" + filename)
+            os.remove(local_downloads + "/" + filename)
     except:
         os.mkdir(local_downloads)
 
