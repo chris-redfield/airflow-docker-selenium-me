@@ -19,7 +19,7 @@ registry.register("postgresql.teiid", "sqlalchemy_teiid", "TeiidDialect")
 import os
 
 ### Tabela Fornecedor
-import dags.pregoeiro_robo_entities.Pessoa
+import dags.pregoeiro_robo_entities.Pessoa as Pessoa
 
 
 # These args will get passed on to each operator
