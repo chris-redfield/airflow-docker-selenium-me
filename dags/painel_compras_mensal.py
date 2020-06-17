@@ -365,7 +365,7 @@ def commit_etl():
     Update CARGA_ATUALIZADA set
     DT_ATUALIZACAO_CARGA_ANTERIOR = DT_ATUALIZACAO_CARGA,
     DT_ATUALIZACAO_CARGA = getdate()
-    WHERE FONTE = 'COMPRAS';
+    WHERE FONTE = 'SIASG_DW';
     """, engine)
 
     print("Pipeline executado com sucesso")
