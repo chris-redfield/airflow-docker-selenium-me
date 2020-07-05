@@ -122,7 +122,7 @@ def load_contrato():
     
     for column in df_contrato.loc[:, df_contrato.dtypes == object].columns:
         print(column)
-        print(df_contrato[column].str.max())
+        print(df_contrato[column].str.len().max())
 
     print("realizando carga na tabela _FORNECEDOR_CONTRATO_ITEM_TERMO_ADITIVO")
     df_contrato.to_sql(name='_FORNECEDOR_CONTRATO_ITEM_TERMO_ADITIVO', con=engine, if_exists = 'append', index=False)
