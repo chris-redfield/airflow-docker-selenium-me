@@ -120,6 +120,10 @@ def load_contrato():
     df_contrato['DT_TMAD_INI_VIGENCIA'] = pd.to_datetime(df_contrato['DT_TMAD_INI_VIGENCIA'], format="%Y-%m-%d", errors='coerce')
     df_contrato['DT_TMAD_FIM_VIGENCIA'] = pd.to_datetime(df_contrato['DT_TMAD_FIM_VIGENCIA'], format="%Y-%m-%d", errors='coerce')
 
+    for column in df_contrato.columns:
+        print(column)
+        print(df_contrato[column].str.len)
+
     print("realizando carga na tabela _FORNECEDOR_CONTRATO_ITEM_TERMO_ADITIVO")
     df_contrato.to_sql(name='_FORNECEDOR_CONTRATO_ITEM_TERMO_ADITIVO', con=engine, if_exists = 'append', index=False)
     print("Concluída carga _FORNECEDOR_CONTRATO_ITEM_TERMO_ADITIVO")
