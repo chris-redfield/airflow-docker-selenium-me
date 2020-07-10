@@ -337,6 +337,11 @@ def commit_etl():
     execute_sql("""sp_rename 'FORNECEDOR_PENALIDADE_FORN', 'FORNECEDOR_PENALIDADE_FORN_ANT';""", engine)
     execute_sql("""sp_rename '_FORNECEDOR_PENALIDADE_FORN', 'FORNECEDOR_PENALIDADE_FORN';""", engine)
 
+
+    ## CRIA INDICES DAS TABELAS
+    print("Criando índices das tabelas")
+    execute_sql(Estrutura.INDICES, engine)
+
     execute_sql("""
     Update CARGA_ATUALIZADA set
     DT_ATUALIZACAO_CARGA_ANTERIOR = DT_ATUALIZACAO_CARGA,
