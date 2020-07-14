@@ -360,6 +360,10 @@ def commit_etl():
     execute_sql("""sp_rename 'FORNECEDOR_SUMARIO_COMPRA', 'FORNECEDOR_SUMARIO_COMPRA_ANT';""", engine)
     execute_sql("""sp_rename '_FORNECEDOR_SUMARIO_COMPRA', 'FORNECEDOR_SUMARIO_COMPRA';""", engine)
 
+    ## CRIA INDICES DA TABELA
+    print("Criando índices das tabelas")
+    execute_sql(Estrutura.INDICES, engine)
+
     print("Atualizando tabela de metadados da carga")
     execute_sql("""
     Update CARGA_ATUALIZADA set
