@@ -140,6 +140,10 @@ def commit_etl():
     execute_sql("""sp_rename 'FORNECEDOR_CONTRATO_ITEM_TERMO_ADITIVO', 'FORNECEDOR_CONTRATO_ITEM_TERMO_ADITIVO_ANT';""", engine)
     execute_sql("""sp_rename '_FORNECEDOR_CONTRATO_ITEM_TERMO_ADITIVO', 'FORNECEDOR_CONTRATO_ITEM_TERMO_ADITIVO';""", engine)
 
+    ## CRIA INDICES DA TABELA
+    print("Criando índices das tabelas")
+    execute_sql(Contrato.INDICES, engine)
+
     return 0
 
 t0 = PythonOperator(
