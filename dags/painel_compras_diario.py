@@ -85,7 +85,7 @@ def get_data_lake_engine():
 
     # create the connection
     print(f"Conectando com banco SQL Server: {DB_SERVER}...")
-    engine = sqlalchemy.create_engine(dl_db_url)
+    engine = sqlalchemy.create_engine(dl_db_url, pool_pre_ping=True, pool_recycle=3600)
     
     return engine
 
@@ -98,7 +98,9 @@ def get_sicaf_dw_connection():
     connSicaf = sqlalchemy.create_engine(
         f"postgresql+teiid://{user}:{password}@daas.serpro.gov.br:35432/Sicaf2018", 
         executemany_mode='batch', 
-        server_side_cursors=False
+        server_side_cursors=False,
+        pool_pre_ping=True,
+        pool_recycle=3600
     )
     return connSicaf
 
